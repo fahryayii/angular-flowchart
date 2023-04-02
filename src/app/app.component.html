@@ -1,0 +1,92 @@
+<ejs-diagram width="100%" height="850px" [getNodeDefaults]="defaultNodeValues">
+  <e-nodes>
+    <e-node id='node1' [offsetY]=100  [shape]="terminatorShape">
+      <e-node-annotations>
+        <e-node-annotation content="Place Order">
+        </e-node-annotation>
+      </e-node-annotations>
+    </e-node>
+    <e-node id='node2' [offsetY]=200 [shape]="processShape">
+      <e-node-annotations>
+        <e-node-annotation content="Start Transaction"></e-node-annotation>
+      </e-node-annotations>
+    </e-node>
+    <e-node id='node3' [offsetY]=300 [shape]="processShape">
+      <e-node-annotations>
+        <e-node-annotation content="Verification"></e-node-annotation>
+      </e-node-annotations>
+    </e-node>
+    <e-node id='node4' [offsetY]=400 [shape]="decisionShape">
+    <e-node-annotations>
+      <e-node-annotation content="Credit Card Valid?"></e-node-annotation>
+    </e-node-annotations>
+  </e-node>
+  <e-node id='node5' [offsetY]=400 [offsetX]=300 [shape]="processShape">
+    <e-node-annotations>
+      <e-node-annotation content="Enter Payment Mode"></e-node-annotation>
+    </e-node-annotations>
+  </e-node>
+  <e-node id='node6' [offsetY]=500 [shape]="decisionShape">
+    <e-node-annotations>
+      <e-node-annotation content="Funds Available"></e-node-annotation>
+    </e-node-annotations>
+  </e-node>
+  <e-node id='node7' [offsetY]=600 [shape]="processShape">
+    <e-node-annotations>
+      <e-node-annotation content="Complete Transaction"></e-node-annotation>
+    </e-node-annotations>
+  </e-node>
+  <e-node id='node8' [offsetY]=600  [offsetX]=300  [shape]="terminatorShape">
+    <e-node-annotations>
+      <e-node-annotation content="Customer Database">
+      </e-node-annotation>
+    </e-node-annotations>
+  </e-node>
+  <e-node id='node9' [offsetY]=600 [offsetX]=-300 [shape]="processShape">
+    <e-node-annotations>
+      <e-node-annotation content="Send Email"></e-node-annotation>
+    </e-node-annotations>
+  </e-node>
+  <e-node id='node10' [offsetY]=700 [shape]="terminatorShape">
+    <e-node-annotations>
+      <e-node-annotation content="Log Transaction">
+      </e-node-annotation>
+    </e-node-annotations>
+  </e-node>
+  <e-node id='node11' [offsetY]=700 [offsetX]=300 [shape]="processShape">
+    <e-node-annotations>
+      <e-node-annotation content="Complete Transaction"></e-node-annotation>
+    </e-node-annotations>
+  </e-node>
+  </e-nodes>
+  <e-connectors>
+    <e-connector sourceID="node1" targetID="node2"></e-connector>
+    <e-connector sourceID="node2" targetID="node3"></e-connector>
+    <e-connector sourceID="node3" targetID="node4"></e-connector>
+    <e-connector sourceID="node4" targetID="node5">
+    <e-connector-annotations>
+      <e-connector-annotation content="No" [margin]="annotationsMargin"></e-connector-annotation>
+    </e-connector-annotations>
+  </e-connector>
+    <e-connector sourceID="node4" targetID="node6">
+      <e-connector-annotations>
+        <e-connector-annotation content="Yes" [margin]="annotationsMargin"></e-connector-annotation>
+      </e-connector-annotations>
+    </e-connector>
+    <e-connector sourceID="node5" targetID="node3" [segments]="segment2" type="Orthogonal"></e-connector>
+    <e-connector sourceID="node6" targetID="node5" [segments]="segment1" type="Orthogonal">
+      <e-connector-annotations>
+        <e-connector-annotation content="No" [margin]="annotationsMargin"></e-connector-annotation>
+      </e-connector-annotations>
+    </e-connector>
+    <e-connector sourceID="node6" targetID="node7">
+      <e-connector-annotations>
+        <e-connector-annotation content="Yes" [margin]="annotationsMargin"></e-connector-annotation>
+      </e-connector-annotations>
+    </e-connector>
+    <e-connector sourceID="node7" targetID="node10"></e-connector>
+    <e-connector sourceID="node7" targetID="node9"></e-connector>
+    <e-connector sourceID="node7" targetID="node8"></e-connector>
+    <e-connector sourceID="node10" targetID="node11"></e-connector>
+  </e-connectors>
+</ejs-diagram>  
